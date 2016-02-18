@@ -29,6 +29,7 @@ build: submodule
 	rm -rf $(BUILD_DIR)
 	cp -R upstream/src $(BUILD_DIR)
 	patch -d $(BUILD_DIR) -p1 < patches/krb5-config_LDFLAGS.patch
+	cd $(BUILD_DIR) && autoreconf -i
 	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure $(PATH_FLAGS) $(CONF_FLAGS)
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
