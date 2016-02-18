@@ -1,0 +1,13 @@
+item do
+  expected do
+    url_xpath
+    url 'http://git.savannah.gnu.org/cgit/libunwind.git/refs/tags'
+    xpath '//*[@id="cgit"]/div/table/tr[2]/td[1]/a'
+    regex /^v([\d.]+)$/
+  end
+
+  actual do
+    git_tag
+    regex /^(.*)-\d+$/
+  end
+end
