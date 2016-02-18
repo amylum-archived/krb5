@@ -5,7 +5,7 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=/usr --sbindir=/usr/bin
-CONF_FLAGS =
+CONF_FLAGS = --without-libedit
 CFLAGS = -static -static-libgcc -Wl,-static -fPIC -fno-strict-aliasing -fstack-protector-all
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/libtirpc-//;s/-/./g')
@@ -31,7 +31,8 @@ build: submodule
 	patch -d $(BUILD_DIR) -p1 < patches/krb5-config_LDFLAGS.patch
 	cd $(BUILD_DIR) && autoreconf -i
 	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure $(PATH_FLAGS) $(CONF_FLAGS)
-	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
+	cd $(BUILD_DIR) && make
+	cd $(BUILD_DIR) && Make DESTDIR=$(RELEASE_DIR) install
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
 	cp upstream/Notice $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
