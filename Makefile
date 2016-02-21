@@ -8,7 +8,7 @@ PATH_FLAGS = --prefix=/usr --sbindir=/usr/bin
 CONF_FLAGS = --without-libedit --enable-static --disable-shared
 CFLAGS = -static -static-libgcc -Wl,-static -fPIC -fno-strict-aliasing -fstack-protector-all -L/tmp/krb5-build/lib
 
-PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/krb//;s/.final//')
+PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/krb5-//;s/.final//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
