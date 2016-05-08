@@ -5,8 +5,8 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=/usr --sbindir=/usr/bin
-CONF_FLAGS = --without-libedit --enable-static --disable-shared
-CFLAGS = -static -static-libgcc -Wl,-static -fPIC -fno-strict-aliasing -fstack-protector-all -L/tmp/krb5-build/lib
+CONF_FLAGS = --without-libedit
+CFLAGS = -fPIC -fno-strict-aliasing -fstack-protector-all -L/tmp/krb5-build/lib
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/krb5-//;s/.final//')
 PATCH_VERSION = $$(cat version)
