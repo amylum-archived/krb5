@@ -1,0 +1,25 @@
+name 'krb5'
+org 'amylum'
+
+licenses 'NOTICE'
+
+configure_flags(
+  prefix: '/usr',
+  sbindir: '/usr/bin',
+  'without-libedit': nil
+)
+
+harden
+
+patch 'krb5-config_LDFLAGS.patch'
+
+build do
+  run 'autoreconf -i'
+  configure
+  make
+  install
+end
+
+test do
+  # TODO: add tests
+end
