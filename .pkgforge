@@ -14,6 +14,7 @@ harden
 patch 'krb5-config_LDFLAGS.patch'
 
 build do
+  run 'rm -rf doc'
   run 'mv src/* ./'
   run 'autoreconf -i'
   configure
