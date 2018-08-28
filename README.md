@@ -1,7 +1,7 @@
 krb5
 ==========
 
-[![Build Status](https://img.shields.io/circleci/project/amylum/krb5/master.svg)](https://circleci.com/gh/amylum/krb5)
+[![Build Status](https://img.shields.io/travis/com/amylum/krb5.svg)](https://travis-ci.com/amylum/krb5)
 [![GitHub release](https://img.shields.io/github/release/amylum/krb5.svg)](https://github.com/amylum/krb5/releases)
 
 Package repo for [krb5](http://web.mit.edu/kerberos/)
